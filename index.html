@@ -1,165 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Product Store</title>
-  <link rel="stylesheet" href="B.CSS" />
-  <meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
+  <meta charset="UTF-8">
+  <title>Priceless Boutique</title>
+  <link rel="stylesheet" href="B.css">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Shop stylish, affordable watches, jewelry, and fashion accessories online with Priceless Boutique. Based in Rwanda, we offer quality products with fast customer support.">
+  <meta name="keywords" content="Watches, Jewelry, Fashion Accessories, Boutique in Rwanda, Online Shopping Rwanda, Affordable Fashion, Priceless Boutique">
+  <meta name="author" content="Priceless Boutique">
+  <meta name="google-site-verification" content="YOUR-CODE-HERE" />
 </head>
 <body>
   <header>
     <h1>Welcome to Priceless Boutique</h1>
     <p>Browse products and contact me to make a deal!</p>
   </header>
-<nav class="navbar">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <!-- Search Bar -->
-  <div class="search-container">
-    <input type="text" id="searchBar" placeholder="Search for a product..." onkeyup="searchProducts()" />
-  </div>
-
-  <!-- Category Filter Buttons -->
+  <!-- Filter Buttons -->
   <div class="filter-buttons">
     <button onclick="filterProducts('all')">All</button>
- <button onclick="filterProducts('accessories')">Accessories</button>
-    <button onclick="filterProducts('Watches&Jewelry')">Watches&Jewelry</button>
+    <button onclick="filterProducts('watches-jewelry')">Watches & Jewelry</button>
+    <button onclick="filterProducts('accessories')">Accessories</button>
   </div>
 
-  <!-- Product List -->
-
-      <!-- Product 1 -->
-  <section class="products">
-    <div class="product" data-category="Watches&Jewelry">
-        <img src="IMG_4980.jpeg.jpg" alt="New 2023 Business Watch Men's quartz watch Sporty wind trend Leisure Men's bracelet set Europe and America" />
-        <h2>New 2023 Business Watch Men's quartz watch Sporty wind trend Leisure Men's bracelet set Europe and America</h2>
-        <p>7,782~9,091 RWF
-        </p>
-        <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-      </div>
- 
-
-<!-- Contact Section -->
-<section id="contact" class="info-section">
-  <h2>Contact Us</h2>
-  <p>Want to buy something or ask a question?</p>
-  <a href="https://wa.me/+250791811619" target="_blank" class="contact-button">Chat with us on WhatsApp</a>
-</section9
-
-      <!-- Product 2 -->
-      <section class="products">
-        <div class="product" data-category="Watches&Jewelry">
-            <img src="IMG_4963.jpeg.jpg" alt="jewelry" />
-            <h2>
-                Fashion crystal sequin necklace temperament trend multi-layer metal pendant clavicle chain jewelry</h2>
-            <p>3,366 RWF</p>
-            <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-          </div>
-      
-            <!-- Product 3 -->
-
-            <section class="products">
-                <div class="product" data-category="Watches&Jewelry">
-                    <img src="IMG_4952.jpeg.jpg" alt="jewelry" />
-                    <h2>6PCS Set Luxury Watch Women Ring Necklace Earring Rhinestone Fashion Wristwatch Casual Ladies Watches Bracelet Set Clock
-                        </h2>
-                    <p>16000RWF</p>
-                    <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-                  </div>
-            
-                    <!-- Product 4 -->
-                    <section class="products">
-                        <div class="product" data-category="Watches&Jewelry">
-                            <img src="IMG_4960.jpeg.jpg" alt="catio Watch" />
-                            <h2>New Digital LED Watch For Men Multifunction Alarm Electronic Clock Waterproof Simple Men Women Stopwatch LED Watches Clocks
-                                </h2>
-                            <p>15000RWF</p>
-                            <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-                          </div>
-                   
-                    <!-- Product 5 -->
-                    <section class="products">
-                        <div class="product" data-category="Watches&Jewelry">
-                            <img src="IMG_4955.jpeg.jpg" alt="Rings" />
-                            <h2>New open multi-joint ring set 22-piece love ring female design sense niche butterfly ring jewelry
-                                </h2>
-                            <p>15000RWF</p>
-                            <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-                          </div>
-                    
-                    <!-- Product 6 -->
-<section class="products">
-    <div class="product" data-category="Watches&Jewelry">
-        <img src="IMG_4982.jpeg.jpg" alt="chain" />
-        <h2>Fashion personality leaf pearl water drop clavicle chain
-            </h2>
-        <p>15000RWF</p>
-        <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
-      </div>
-</section>
-
-
-                    
-
-    <!-- Product 2 -->
-
-    <div class="product" data-category="accessories">
-      <img src="hat.jpg" alt="Fashion Hat" />
-      <h2>Fashion Hat</h2>
-      <p>$15.00</p>
-      <a href="https://wa.me/+250791811619" target="_blank" class="buy-btn">Contact to Buy</a>
+  <!-- Products Section -->
+  <section id="products">
+    <div class="product" data-category="watches-jewelry">
+      <img src="watch1.jpg" alt="Watch">
+      <p>Luxury Watch</p>
     </div>
+    <div class="product" data-category="watches-jewelry">
+      <img src="jewelry1.jpg" alt="Jewelry">
+      <p>Gold Necklace</p>
+    </div>
+    <div class="product" data-category="accessories">
+      <img src="hat1.jpg" alt="Hat">
+      <p>Fashion Hat</p>
+    </div>
+    <div class="product" data-category="accessories">
+      <img src="sunglasses1.jpg" alt="Sunglasses">
+      <p>Trendy Sunglasses</p>
+    </div>
+    <!-- Watches & Jewelry Category -->
+<div class="product" data-category="watches-jewelry">
+  <img src="watch2.jpg" alt="Watch">
+  <p>Classic Silver Watch</p>
+</div>
+
+<div class="product" data-category="watches-jewelry">
+  <img src="necklace1.jpg" alt="Necklace">
+  <p>Elegant Gold Necklace</p>
+</div>
+
+<!-- Accessories Category -->
+<div class="product" data-category="accessories">
+  <img src="scarf1.jpg" alt="Scarf">
+  <p>Silk Fashion Scarf</p>
+</div>
+
+<div class="product" data-category="accessories">
+  <img src="belt1.jpg" alt="Belt">
+  <p>Leather Belt</p>
+</div>
+
   </section>
-<!-- About Section -->
-<section id="about" class="info-section">
-  <h2>About Us</h2>
-  <p>Welcome to Priceless Boutique! We offer stylish, affordable, and high-quality fashion for every occasion. Whether you're looking for shoes, clothes, watches, or accessories — we've got you covered.</p>
-</section>
 
-<!-- Contact Section -->
-<section id="contact" class="info-section">
-  <h2>Contact Us</h2>
-  <p>Want to buy something or ask a question?</p>
-  <a href="https://wa.me/+250791811619" target="_blank" class="contact-button">Chat with us on WhatsApp</a><br>
-</section><br>
-                      
-  <footer>
-    <p>&copy; 2025 My Store. All rights reserved.</p>
-  </footer>
+  <!-- About Section -->
+  <section id="about" class="info-section">
+    <h2>About Us</h2>
+    <p>Welcome to Priceless Boutique! We offer stylish, affordable, and high-quality fashion for every occasion. Whether you're looking for watches, jewelry, or accessories — we've got you covered.</p>
+  </section>
 
-  <!-- Scripts -->
+  <!-- Contact Section -->
+  <section id="contact" class="info-section">
+    <h2>Contact Us</h2>
+    <p>Want to buy something or ask a question?</p>
+    <a href="https://wa.me/250791811619" target="_blank" class="contact-button">Chat with us on WhatsApp</a>
+  </section>
+
+  <!-- JavaScript -->
   <script>
-    function searchProducts() {
-      const input = document.getElementById("searchBar").value.toLowerCase();
-      const products = document.getElementsByClassName("product");
-
-      for (let i = 0; i < products.length; i++) {
-        const name = products[i].getElementsByTagName("h2")[0].textContent.toLowerCase();
-        products[i].style.display = name.includes(input) ? "" : "none";
-      }
-    }
-
     function filterProducts(category) {
       const products = document.querySelectorAll('.product');
-
       products.forEach(product => {
-        const productCategory = product.getAttribute('data-category');
-
-        if (category === 'all' || productCategory === category) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
+        const match = category === 'all' || product.dataset.category === category;
+        product.style.display = match ? 'block' : 'none';
       });
     }
   </script>
+
 </body>
 </html>
-

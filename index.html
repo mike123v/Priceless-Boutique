@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
+    <meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
     <title>Priceless Boutique - Affordable Luxury</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -674,7 +674,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <div class="contact-item-content">
                         <h3>Address</h3>
-                        <p>KIGALI_RWANDA </p>
+                        <p>KIGALI_RWANDA</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -682,14 +682,13 @@
                     <div class="contact-item-content">
                         <h3>Business Hours</h3>
                         <p>24/7</p>
-                        
-        
                     </div>
                 </div>
             </div>
         </div>
     </main>
- <!-- Footer -->
+
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -758,73 +757,72 @@
         const products = [
             {
                 id: 1,
-                title: "leather watch",
+                title: "Leather Watch",
                 price: 8000,
                 category: "watches",
-                 image: "images/watches/watch1.jpg",
-                description: "
-Men's quartz watch retro large dial business casual PU leather watch"
+                image: "images/watches/watch1.jpg",
+                description: "Men's quartz watch retro large dial business casual PU leather watch"
             },
             {
                 id: 2,
-                title: " multi-joint ring ",
+                title: "Multi-Joint Ring Set",
                 price: 7000,
                 category: "jewelry",
                 image: "images/jewelry/ring1.jpg",
                 description: "New open multi-joint ring set 22-piece love ring female design sense niche butterfly ring jewelry"
             },
-                        {
-                id: 2,
-                title: "Titanium steel necklace men and women hip hop",
-                price: 6000,
-                category: "jewelry",
-                image: "images/jewelry/necklace 7.jpg",
-                description: "Titanium steel necklace men and women hip hop personality simple long pendant cold wind fashion sweater chain &"
-            },
             {
                 id: 3,
-                title: "Hot Sale Jewelry",
-                price: 5000,
-                category: "accessories",
-                image: "images/jewelry/bracelet1.jpg",
-                description: "Hot Sale Jewelry Simple Fashion Star Moon Diamond Glossy Heart Star Bracelet Four-piece"
+                title: "Titanium Steel Necklace",
+                price: 6000,
+                category: "jewelry",
+                image: "images/jewelry/necklace7.jpg",
+                description: "Titanium steel necklace men and women hip hop personality simple long pendant"
             },
             {
                 id: 4,
-                title: " Titanium Steel Men's Necklace",
+                title: "Hot Sale Jewelry Set",
                 price: 5000,
                 category: "jewelry",
-                image: "images/jewelry/necklace 5.jpg",
-                description: "Fitness Dumbbell Hip Hop Pendant Titanium Steel Men's Necklace Korean Personality Pendant Ornament"
+                image: "images/jewelry/bracelet1.jpg",
+                description: "Hot Sale Jewelry Simple Fashion Star Moon Diamond Glossy Heart Star Bracelet"
             },
             {
                 id: 5,
-                title: "Watch Men Cigarette Lighter ",
-                price: 20000,
-                category: "watches",
-                image: "images/watches/watch2.jpg",
-                description: "Watch Men Cigarette Lighter Smartwatch USB Charging Casual Quartz Wristwatches Flameless Replaceable heating wire Clock BL559"
+                title: "Dumbbell Pendant Necklace",
+                price: 5000,
+                category: "jewelry",
+                image: "images/jewelry/necklace5.jpg",
+                description: "Fitness Dumbbell Hip Hop Pendant Titanium Steel Men's Necklace"
             },
             {
                 id: 6,
-                title: "Set Luxury Watch Women Ring Necklace",
-                price: 15000,
-                category: "jewelry",
-                image: "images/jewelry/earrings1.jpg",
-                description: "6PCS Set Luxury Watch Women Ring Necklace Earring Rhinestone Fashion Wristwatch Casual Ladies Watches Bracelet Set Clock"
+                title: "Smart Watch with Lighter",
+                price: 20000,
+                category: "watches",
+                image: "images/watches/watch2.jpg",
+                description: "Watch with USB Charging and Flameless Lighter Functionality"
             },
             {
                 id: 7,
+                title: "Luxury Jewelry Set",
+                price: 15000,
+                category: "jewelry",
+                image: "images/jewelry/earrings1.jpg",
+                description: "6PCS Set Luxury Watch Women Ring Necklace Earring Rhinestone Fashion Set"
+            },
+            {
+                id: 8,
                 title: "Stylish Sunglasses",
-                price: 34.99,
+                price: 8000,
                 category: "accessories",
                 image: "images/accessories/sunglasses1.jpg",
                 description: "UV protection sunglasses with metal frame"
             },
             {
-                id: 8,
-                title: "Luxury Leather Wallet",
-                price: 39.99,
+                id: 9,
+                title: "Leather Wallet",
+                price: 7000,
                 category: "accessories",
                 image: "images/accessories/wallet1.jpg",
                 description: "Genuine leather wallet with multiple compartments"
@@ -905,7 +903,7 @@ Men's quartz watch retro large dial business casual PU leather watch"
                         <img src="${item.image}" alt="${item.title}" class="cart-item-img">
                         <div class="cart-item-details">
                             <h4 class="cart-item-title">${item.title}</h4>
-                            <p class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
+                            <p class="cart-item-price">RWF ${(item.price * item.quantity).toFixed(2)}</p>
                             <div class="quantity-controls">
                                 <button class="decrease-quantity" data-id="${item.id}">-</button>
                                 <span class="quantity">${item.quantity}</span>
@@ -1003,7 +1001,7 @@ Men's quartz watch retro large dial business casual PU leather watch"
                         <img src="${product.image}" alt="${product.title}" class="product-img">
                         <div class="product-info">
                             <h3 class="product-title">${product.title}</h3>
-                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <div class="product-price">RWF ${product.price.toFixed(2)}</div>
                             <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
                         </div>
                     `;
@@ -1072,7 +1070,7 @@ Men's quartz watch retro large dial business casual PU leather watch"
             // Checkout button
             document.querySelector('.checkout-btn').addEventListener('click', () => {
                 if (cart.getTotalItems() > 0) {
-                    alert(`Proceeding to checkout with $${cart.getTotalPrice().toFixed(2)} order`);
+                    alert(`Proceeding to checkout with RWF ${cart.getTotalPrice().toFixed(2)} order`);
                     // In real implementation, redirect to checkout page
                 } else {
                     alert('Your cart is empty!');

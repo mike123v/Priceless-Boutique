@@ -746,7 +746,7 @@
                 <p class="empty-cart-message">Your cart is empty</p>
             </div>
             <div class="cart-total">
-                Total: RWF<span id="cartTotal">00/span>
+                Total: RWF<span id="cartTotal">0/span>
             </div>
             <button class="checkout-btn">Proceed to Checkout</button>
         </div>
@@ -928,7 +928,7 @@
                 
                 if (this.items.length === 0) {
                     cartItemsEl.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
-                    document.getElementById('cartTotal').textContent = '0.00';
+                    document.getElementById('cartTotal').textContent = '0';
                     return;
                 }
                 

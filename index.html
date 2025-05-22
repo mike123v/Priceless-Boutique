@@ -1119,5 +1119,70 @@
             cart.updateCartUI();
         });
     </script>
+    <!-- ======= MTN Mobile Money Payment - START ======= -->
+<div id="mtn-payment-box" style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+  <h3 style="color: #ffcc00; text-align: center;">Pay with MTN Mobile Money</h3>
+  
+  <div style="margin: 15px 0;">
+    <label style="display: block; margin-bottom: 5px;">MTN Number</label>
+    <input 
+      type="tel" 
+      id="mtn-phone" 
+      placeholder="0551234567" 
+      style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+      required
+    >
+  </div>
+  
+  <button 
+    id="mtn-pay-button"
+    style="width: 100%; padding: 12px; background: #ffcc00; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;"
+  >
+    PAY GHS <span id="mtn-amount">0.00</span>
+  </button>
+  
+  <p id="mtn-status" style="text-align: center; margin-top: 10px;"></p>
+</div>
+
+<script>
+// Automatically show cart total
+document.addEventListener('DOMContentLoaded', function() {
+  const cartTotal = document.getElementById('cartTotal')?.textContent || '0';
+  document.getElementById('mtn-amount').textContent = cartTotal;
+});
+
+// Payment handler
+document.getElementById('mtn-pay-button').addEventListener('click', function() {
+  const phone = document.getElementById('mtn-phone').value;
+  const amount = document.getElementById('mtn-amount').textContent;
+  const statusEl = document.getElementById('mtn-status');
+  
+  if (!phone.match(/^(0|233)\d{9}$/)) {
+    statusEl.innerHTML = '<span style="color: red;">Invalid MTN number (use 0551234567 format)</span>';
+    return;
+  }
+  
+  statusEl.innerHTML = '<span style="color: green;">Sending payment request...</span>';
+  
+  // In a REAL implementation, you would call your backend here
+  // For demo purposes, we'll simulate it:
+  setTimeout(() => {
+    statusEl.innerHTML = `
+      <div style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+        <p>✅ Payment request sent to <strong>${phone}</strong></p>
+        <p>1. Check your phone for MTN MoMo prompt</p>
+        <p>2. Enter your PIN to complete payment</p>
+        <p>3. You'll receive SMS confirmation</p>
+      </div>
+    `;
+    
+    // This would be replaced with actual payment verification
+    setTimeout(() => {
+      statusEl.innerHTML += '<p style="color: green;">Payment verified! Thank you.</p>';
+    }, 5000);
+  }, 2000);
+});
+</script>
+<!-- ======= MTN Mobile Money Payment - END ======= -->
 </body>
 </html>

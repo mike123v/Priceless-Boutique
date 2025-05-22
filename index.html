@@ -1118,71 +1118,83 @@
             showPage('home');
             cart.updateCartUI();
         });
-    </script>
-    <!-- ======= MTN Mobile Money Payment - START ======= -->
-<div id="mtn-payment-box" style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-  <h3 style="color: #ffcc00; text-align: center;">Pay with MTN Mobile Money</h3>
+        <!-- ======= MTN Rwanda Mobile Money Payment ======= -->
+<div id="mtn-rw-payment" style="max-width: 400px; margin: 20px auto; padding: 20px; background: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <h3 style="color: #ffcc00; text-align: center; margin-bottom: 20px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/MTN_Logo.svg/1200px-MTN_Logo.svg.png" width="60" style="vertical-align: middle;">
+    Pay with MTN Mobile Money Rwanda
+  </h3>
   
-  <div style="margin: 15px 0;">
-    <label style="display: block; margin-bottom: 5px;">MTN Number</label>
+  <div style="margin-bottom: 15px;">
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">MTN Rwanda Number</label>
     <input 
       type="tel" 
-      id="mtn-phone" 
-      placeholder="0551234567" 
-      style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+      id="mtn-rw-phone" 
+      placeholder="0791811619" 
+      style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;"
       required
     >
+    <p style="font-size: 12px; color: #666; margin-top: 5px;">Format: 078xxxxxxx or 073xxxxxxx</p>
   </div>
   
   <button 
-    id="mtn-pay-button"
-    style="width: 100%; padding: 12px; background: #ffcc00; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;"
+    id="mtn-rw-pay-btn"
+    style="width: 100%; padding: 12px; background: #ffcc00; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.3s;"
+    onmouseover="this.style.background='#e6b800'" 
+    onmouseout="this.style.background='#ffcc00'"
   >
-    PAY GHS <span id="mtn-amount">0.00</span>
+    PAY RWF <span id="mtn-rw-amount">0</span>
   </button>
   
-  <p id="mtn-status" style="text-align: center; margin-top: 10px;"></p>
+  <div id="mtn-rw-status" style="margin-top: 15px; padding: 10px; border-radius: 4px;"></div>
 </div>
 
 <script>
-// Automatically show cart total
+// Set cart amount
 document.addEventListener('DOMContentLoaded', function() {
-  const cartTotal = document.getElementById('cartTotal')?.textContent || '0';
-  document.getElementById('mtn-amount').textContent = cartTotal;
+  const total = document.getElementById('cartTotal')?.textContent || '0';
+  document.getElementById('mtn-rw-amount').textContent = total;
 });
 
 // Payment handler
-document.getElementById('mtn-pay-button').addEventListener('click', function() {
-  const phone = document.getElementById('mtn-phone').value;
-  const amount = document.getElementById('mtn-amount').textContent;
-  const statusEl = document.getElementById('mtn-status');
+document.getElementById('mtn-rw-pay-btn').addEventListener('click', function() {
+  const phone = document.getElementById('mtn-rw-phone').value;
+  const amount = document.getElementById('mtn-rw-amount').textContent;
+  const statusEl = document.getElementById('mtn-rw-status');
   
-  if (!phone.match(/^(0|233)\d{9}$/)) {
-    statusEl.innerHTML = '<span style="color: red;">Invalid MTN number (use 0551234567 format)</span>';
+  // Validate Rwanda MTN number (078 or 073)
+  if (!phone.match(/^(078|079)\d{7}$/)) {
+    statusEl.innerHTML = '<p style="color: red; background: #ffeeee; padding: 10px;">Please enter a valid MTN Rwanda number (078xxxxxxx or 073xxxxxxx)</p>';
     return;
   }
   
-  statusEl.innerHTML = '<span style="color: green;">Sending payment request...</span>';
+  statusEl.innerHTML = '<p style="color: #31708f; background: #d9edf7; padding: 10px;">⌛ Sending payment request to MTN Rwanda...</p>';
   
-  // In a REAL implementation, you would call your backend here
-  // For demo purposes, we'll simulate it:
+  // SIMULATED PAYMENT (Replace with actual API call)
   setTimeout(() => {
     statusEl.innerHTML = `
-      <div style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
-        <p>✅ Payment request sent to <strong>${phone}</strong></p>
-        <p>1. Check your phone for MTN MoMo prompt</p>
-        <p>2. Enter your PIN to complete payment</p>
-        <p>3. You'll receive SMS confirmation</p>
+      <div style="background: #dff0d8; padding: 15px; border-radius: 4px;">
+        <p style="color: #3c763d; font-weight: bold;">✔ Payment request sent to ${phone}</p>
+        <hr style="border-color: #d6e9c6;">
+        <p>1. Open <strong>MTN Mobile Money</strong> on your phone</p>
+        <p>2. Confirm payment of <strong>RWF ${amount}</strong></p>
+        <p>3. Enter your <strong>PIN</strong> when prompted</p>
       </div>
     `;
     
-    // This would be replaced with actual payment verification
+    // Simulate payment verification (replace with real API)
     setTimeout(() => {
-      statusEl.innerHTML += '<p style="color: green;">Payment verified! Thank you.</p>';
-    }, 5000);
-  }, 2000);
+      statusEl.innerHTML += `
+        <div style="margin-top: 10px; background: #dff0d8; padding: 10px; border-radius: 4px;">
+          <p style="color: #3c763d;">✅ Payment confirmed! Thank you for shopping at Priceless Boutique.</p>
+          <p>Transaction ID: RW${Date.now()}</p>
+        </div>
+      `;
+    }, 3000);
+  }, 1500);
 });
 </script>
-<!-- ======= MTN Mobile Money Payment - END ======= -->
+    </script>
+   
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
+<meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
     <title>Priceless Boutique - Affordable Luxury</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <style>
         :root {
             --primary: #000000;
@@ -77,27 +78,6 @@
             color: var(--secondary);
         }
         
-        .cart-icon {
-            position: relative;
-            color: white;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: var(--secondary);
-            color: var(--primary);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -105,6 +85,33 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            margin: 1rem auto;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-btn {
+            padding: 0 1.5rem;
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
         }
         
         /* Main Content */
@@ -248,6 +255,7 @@
             height: 250px;
             width: 100%;
             object-fit: cover;
+            cursor: pointer;
         }
         
         .product-info {
@@ -268,7 +276,7 @@
             margin-bottom: 1rem;
         }
         
-        .add-to-cart {
+        .view-details {
             width: 100%;
             padding: 0.7rem;
             background-color: var(--primary);
@@ -279,7 +287,7 @@
             transition: background-color 0.3s;
         }
         
-        .add-to-cart:hover {
+        .view-details:hover {
             background-color: var(--secondary);
             color: var(--primary);
         }
@@ -339,123 +347,37 @@
             margin-bottom: 0.3rem;
         }
         
-        /* Cart Sidebar */
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+        /* Image Zoom Modal */
+        .image-modal {
             display: none;
-            justify-content: flex-end;
-        }
-        
-        .cart-sidebar {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
             width: 100%;
-            max-width: 400px;
             height: 100%;
-            background-color: white;
-            padding: 2rem;
-            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.9);
         }
         
-        .cart-header {
+        .modal-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
+            height: 100%;
         }
         
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
             cursor: pointer;
-        }
-        
-        .cart-items {
-            margin-bottom: 2rem;
-        }
-        
-        .cart-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .cart-item-img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        
-        .cart-item-details {
-            flex: 1;
-        }
-        
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .cart-item-price {
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .quantity-controls button {
-            width: 25px;
-            height: 25px;
-            border: 1px solid #ddd;
-            background: none;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        
-        .cart-item-remove {
-            color: #ff6b6b;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        
-        .cart-total {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: right;
-        }
-        
-        .checkout-btn {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--secondary);
-            color: var(--primary);
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .checkout-btn:hover {
-            background-color: #e8c252;
         }
         
         /* Footer */
@@ -587,12 +509,6 @@
                     <li><a href="#" class="nav-link" data-page="shop">Shop</a></li>
                     <li><a href="#" class="nav-link" data-page="about">About</a></li>
                     <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
-                    <li>
-                        <a href="#" class="cart-icon" id="cartIcon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-count">0</span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -612,19 +528,19 @@
 
             <h2 class="section-title">Our Collections</h2>
             <div class="categories">
-                <div class="category-card" style="background-image: url('images/watches/category.jpg')" data-category="watches">
+                <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80')" data-category="watches">
                     <div class="category-overlay">
                         <h3>Watches</h3>
                         <button class="btn nav-link" data-page="shop" data-category="watches">View Collection</button>
                     </div>
                 </div>
-                <div class="category-card" style="background-image: url('images/jewelry/category.jpg')" data-category="jewelry">
+                <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')" data-category="jewelry">
                     <div class="category-overlay">
                         <h3>Jewelry</h3>
                         <button class="btn nav-link" data-page="shop" data-category="jewelry">View Collection</button>
                     </div>
                 </div>
-                <div class="category-card" style="background-image: url('images/accessories/category.jpg')" data-category="accessories">
+                <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')" data-category="accessories">
                     <div class="category-overlay">
                         <h3>Accessories</h3>
                         <button class="btn nav-link" data-page="shop" data-category="accessories">View Collection</button>
@@ -635,6 +551,10 @@
 
         <!-- Shop Page -->
         <div id="shop" class="page">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
             <h2 class="section-title">Our Products</h2>
             <div class="products" id="productsContainer">
                 <!-- Products will be loaded here by JavaScript -->
@@ -688,6 +608,14 @@
         </div>
     </main>
 
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="Zoomed Product Image">
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -733,25 +661,7 @@
         </div>
     </footer>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-overlay" id="cartOverlay">
-        <div class="cart-sidebar">
-            <div class="cart-header">
-                <h3>Your Cart</h3>
-                <button class="close-cart" id="closeCart">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="cart-items" id="cartItems">
-                <p class="empty-cart-message">Your cart is empty</p>
-            </div>
-            <div class="cart-total">
-                Total: RWF<span id="cartTotal">0/span>
-            </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
-        </div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script>
         // Product Database - REPLACE WITH YOUR PRODUCTS
         const products = [
@@ -763,7 +673,6 @@
                 image: "images/watches/watch1.jpg",
                 description: "Men's quartz watch retro large dial business casual PU leather watch"
             },
-            
             {
                 id: 2,
                 title: "Multi-Joint Ring Set",
@@ -812,8 +721,7 @@
                 image: "images/jewelry/earrings1.jpg",
                 description: "6PCS Set Luxury Watch Women Ring Necklace Earring Rhinestone Fashion Set"
             },
-         
-              {
+            {
                 id: 10,
                 title: "Sexy Invisible Bra Lingerie",
                 price: 8000,
@@ -821,16 +729,15 @@
                 image: "images/accessories/ss.jpg",
                 description: "Sexy Invisible Bra Lingerie For Women Backless Seamless Strapless Bra Sexy Bralette Mujer Brassiere Crop Top Push Up Bras Gifts"
             },
-             {
-                 id: 11,
+            {
+                id: 11,
                 title: "Handbags Korean",
                 price: 7000,
                 category: "accessories",
-                image: "images/accessories/bag.jpg",
+                image: "bag.jpg",
                 description: "Solid Color Temperament Women's Handbags Korean Stone Pattern Underarm Pouches Casual Shoulder Bags"
-    },
-        
-         {
+            },
+            {
                 id: 12,
                 title: "Zipper Small Handbags",
                 price: 15000,
@@ -838,7 +745,7 @@
                 image: "images/accessories/bag1.jpg",
                 description: "Women's Bag 2025 Brand Designer Zipper Small Handbags Lady Fashion Shoulder Bag PU Leather Casual Hobo Bags"
             },
-                         {
+            {
                 id: 13,
                 title: "Automatic Toothpaste",
                 price: 10000,
@@ -846,157 +753,37 @@
                 image: "images/accessories/br.jpg",
                 description: "Automatic Toothpaste Dispenser Toothbrush Holder Storage Rack Wall Mount Holder Bathroom Accessories Toothpaste Squeezer Set"
             },
-        
-           {
-               id: 14,
+            {
+                id: 14,
                 title: "Punk Styles Playing Card Poker Pendant Necklace",
                 price: 7000,
                 category: "jewelry",
                 image: "images/jewelry/crf.jpg",
                 description: "Punk Styles Playing Card Poker Pendant Necklace Men Boys Hip Hop Lucky Ace Of Spades Charm Necklace For Men Women Couple"
             },
-                 {
-               id: 15,
-                title: " Necklaces",
+            {
+                id: 15,
+                title: "Necklaces",
                 price: 7000,
                 category: "jewelry",
                 image: "images/jewelry/jew.jpg",
                 description: "Nightclub Hip-Hop Fashion Personality Letter Pendant Titanium Steel Necklaces for Men and Women Gold Stainless Steel Jewelry"
             },
-                     
         ];
-
-        // Shopping Cart Class
-        class ShoppingCart {
-            constructor() {
-                this.items = JSON.parse(localStorage.getItem('cart')) || [];
-            }
-            
-            addItem(product, quantity = 1) {
-                const existingItem = this.items.find(item => item.id === product.id);
-                
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    this.items.push({
-                        ...product,
-                        quantity: quantity
-                    });
-                }
-                
-                this.saveToLocalStorage();
-                this.updateCartUI();
-            }
-            
-            removeItem(productId) {
-                this.items = this.items.filter(item => item.id !== productId);
-                this.saveToLocalStorage();
-                this.updateCartUI();
-            }
-            
-            updateQuantity(productId, newQuantity) {
-                const item = this.items.find(item => item.id === productId);
-                if (item) {
-                    item.quantity = newQuantity;
-                    this.saveToLocalStorage();
-                    this.updateCartUI();
-                }
-            }
-            
-            getTotalItems() {
-                return this.items.reduce((total, item) => total + item.quantity, 0);
-            }
-            
-            getTotalPrice() {
-                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
-            }
-            
-            saveToLocalStorage() {
-                localStorage.setItem('cart', JSON.stringify(this.items));
-            }
-            
-            updateCartUI() {
-                document.querySelector('.cart-count').textContent = this.getTotalItems();
-                
-                if (document.getElementById('cartOverlay').style.display === 'flex') {
-                    this.renderCartItems();
-                }
-            }
-            
-            renderCartItems() {
-                const cartItemsEl = document.getElementById('cartItems');
-                
-                if (this.items.length === 0) {
-                    cartItemsEl.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
-                    document.getElementById('cartTotal').textContent = '0';
-                    return;
-                }
-                
-                cartItemsEl.innerHTML = '';
-                this.items.forEach(item => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                        <div class="cart-item-details">
-                            <h4 class="cart-item-title">${item.title}</h4>
-                            <p class="cart-item-price">RWF ${(item.price * item.quantity).toFixed(2)}</p>
-                            <div class="quantity-controls">
-                                <button class="decrease-quantity" data-id="${item.id}">-</button>
-                                <span class="quantity">${item.quantity}</span>
-                                <button class="increase-quantity" data-id="${item.id}">+</button>
-                            </div>
-                            <button class="cart-item-remove" data-id="${item.id}">Remove</button>
-                        </div>
-                    `;
-                    cartItemsEl.appendChild(cartItem);
-                });
-                
-                document.getElementById('cartTotal').textContent = this.getTotalPrice().toFixed(2);
-                
-                // Add event listeners to new cart items
-                document.querySelectorAll('.decrease-quantity').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const id = parseInt(e.target.getAttribute('data-id'));
-                        const item = this.items.find(item => item.id === id);
-                        if (item.quantity > 1) {
-                            this.updateQuantity(id, item.quantity - 1);
-                        } else {
-                            this.removeItem(id);
-                        }
-                    });
-                });
-                
-                document.querySelectorAll('.increase-quantity').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const id = parseInt(e.target.getAttribute('data-id'));
-                        const item = this.items.find(item => item.id === id);
-                        this.updateQuantity(id, item.quantity + 1);
-                    });
-                });
-                
-                document.querySelectorAll('.cart-item-remove').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const id = parseInt(e.target.getAttribute('data-id'));
-                        this.removeItem(id);
-                    });
-                });
-            }
-        }
 
         // Initialize the application when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            const cart = new ShoppingCart();
-            
             // DOM Elements
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('.nav-link');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mainNav = document.getElementById('mainNav');
-            const cartIcon = document.getElementById('cartIcon');
-            const cartOverlay = document.getElementById('cartOverlay');
-            const closeCart = document.getElementById('closeCart');
             const productsContainer = document.getElementById('productsContainer');
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.querySelector('.close-modal');
             
             // Show specific page
             function showPage(pageId, category = null) {
@@ -1019,15 +806,19 @@
             }
             
             // Display products
-            function displayProducts(category = 'all') {
+            function displayProducts(category = 'all', searchQuery = '') {
                 productsContainer.innerHTML = '';
                 
-                const filteredProducts = category === 'all' 
-                    ? products 
-                    : products.filter(product => product.category === category);
+                const filteredProducts = products.filter(product => {
+                    const matchesCategory = category === 'all' || product.category === category;
+                    const matchesSearch = searchQuery === '' || 
+                        product.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                        product.description.toLowerCase().includes(searchQuery.toLowerCase());
+                    return matchesCategory && matchesSearch;
+                });
                 
                 if (filteredProducts.length === 0) {
-                    productsContainer.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No products found in this category.</p>';
+                    productsContainer.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No products found matching your criteria.</p>';
                     return;
                 }
                 
@@ -1035,30 +826,42 @@
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     productCard.innerHTML = `
-                        <img src="${product.image}" alt="${product.title}" class="product-img">
+                        <img src="${product.image}" alt="${product.title}" class="product-img" data-id="${product.id}">
                         <div class="product-info">
                             <h3 class="product-title">${product.title}</h3>
-                            <div class="product-price">RWF ${product.price.toFixed(2)}</div>
-                            <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                            <div class="product-price">RWF ${product.price.toLocaleString()}</div>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">${product.description}</p>
+                            <button class="view-details" data-id="${product.id}">View Details</button>
                         </div>
                     `;
                     productsContainer.appendChild(productCard);
                 });
                 
-                // Add event listeners to "Add to Cart" buttons
-                document.querySelectorAll('.add-to-cart').forEach(button => {
+                // Add event listeners to product images for zoom
+                document.querySelectorAll('.product-img').forEach(img => {
+                    img.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        const product = products.find(p => p.id === productId);
+                        if (product) {
+                            modalImage.src = product.image;
+                            modalImage.alt = product.title;
+                            imageModal.style.display = "flex";
+                            document.body.style.overflow = "hidden";
+                        }
+                    });
+                });
+                
+                // Add event listeners to view details buttons
+                document.querySelectorAll('.view-details').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const productId = parseInt(e.target.getAttribute('data-id'));
                         const product = products.find(p => p.id === productId);
-                        cart.addItem(product);
-                        
-                        // Visual feedback
-                        e.target.textContent = 'Added!';
-                        e.target.style.backgroundColor = '#28a745';
-                        setTimeout(() => {
-                            e.target.textContent = 'Add to Cart';
-                            e.target.style.backgroundColor = '';
-                        }, 1000);
+                        if (product) {
+                            modalImage.src = product.image;
+                            modalImage.alt = product.title;
+                            imageModal.style.display = "flex";
+                            document.body.style.overflow = "hidden";
+                        }
                     });
                 });
             }
@@ -1077,25 +880,6 @@
                 mainNav.classList.toggle('active');
             });
             
-            cartIcon.addEventListener('click', (e) => {
-                e.preventDefault();
-                cartOverlay.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                cart.renderCartItems();
-            });
-            
-            closeCart.addEventListener('click', () => {
-                cartOverlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            cartOverlay.addEventListener('click', (e) => {
-                if (e.target === cartOverlay) {
-                    cartOverlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
             // Category card clicks
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', () => {
@@ -1104,21 +888,35 @@
                 });
             });
             
-            // Checkout button
-            document.querySelector('.checkout-btn').addEventListener('click', () => {
-                if (cart.getTotalItems() > 0) {
-                    alert(`Proceeding to checkout with RWF ${cart.getTotalPrice().toFixed(2)} order`);
-                    // In real implementation, redirect to checkout page
-                } else {
-                    alert('Your cart is empty!');
+            // Search functionality
+            searchBtn.addEventListener('click', () => {
+                const searchQuery = searchInput.value.trim();
+                displayProducts('all', searchQuery);
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const searchQuery = searchInput.value.trim();
+                    displayProducts('all', searchQuery);
+                }
+            });
+            
+            // Image modal functionality
+            closeModal.addEventListener('click', () => {
+                imageModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.style.display = "none";
+                    document.body.style.overflow = "auto";
                 }
             });
             
             // Initialize
             showPage('home');
-            cart.updateCartUI();
         });
     </script>
-   
 </body>
 </html>

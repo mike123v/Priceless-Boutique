@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
+    <meta name="google-site-verification" content="GShMWyeAhG1CjBeOAdNREotPHC5iDHhjocSQCXvvJbI" />
     <title>Priceless Boutique - Affordable Luxury</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
@@ -14,20 +14,7 @@
             --light: #f8f9fa;
             --dark: #212529;
         }
-        .image-previews {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.image-previews img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
+        
         * {
             margin: 0;
             padding: 0;
@@ -264,11 +251,85 @@
             transform: translateY(-10px);
         }
         
-        .product-img {
+        /* Product Gallery Styles */
+        .product-gallery {
+            position: relative;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .main-image-container {
+            position: relative;
             height: 250px;
-            width: 100%;
-            object-fit: cover;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
             cursor: pointer;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-nav.prev {
+            left: 15px;
+        }
+
+        .gallery-nav.next {
+            right: 15px;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .thumbnail-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.active {
+            border-color: var(--secondary);
         }
         
         .product-info {
@@ -392,6 +453,44 @@
             font-size: 30px;
             cursor: pointer;
         }
+
+        /* Modal Gallery Styles */
+        .modal-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-main-image {
+            max-height: 70vh;
+            max-width: 100%;
+            margin-bottom: 15px;
+            cursor: default;
+        }
+
+        .modal-thumbnail-container {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        .modal-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .modal-thumbnail.active {
+            border-color: var(--secondary);
+        }
         
         /* Footer */
         footer {
@@ -497,57 +596,6 @@
             .mobile-menu-btn {
                 display: block;
             }
-            /* Add to your existing CSS */
-.product-slider {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-}
-
-.product-slider .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.product-slider .slide.active {
-  opacity: 1;
-}
-
-.product-slider img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slide-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.slide-arrow.prev-arrow {
-  left: 10px;
-}
-
-.slide-arrow.next-arrow {
-  right: 10px;
-}
-
-.slide-arrow:hover {
-  background: rgba(0,0,0,0.8);
-}
             
             .hero-content h1 {
                 font-size: 2rem;
@@ -555,6 +603,10 @@
             
             .categories {
                 grid-template-columns: 1fr;
+            }
+
+            .main-image-container {
+                height: 200px;
             }
         }
     </style>
@@ -635,11 +687,6 @@
                 <p>Our mission is simple: to make luxury accessible. We meticulously select each item in our collection to ensure it meets our standards of quality, style, and affordability.</p>
             </div>
         </div>
-        <div class="form-group">
-  <label for="productImages">Product Images (Multiple):</label>
-  <input type="file" id="productImages" accept="image/*" multiple required>
-  <div id="imagePreviews" class="image-previews"></div>
-</div>
 
         <!-- Contact Page -->
         <div id="contact" class="page">
@@ -681,7 +728,7 @@
     <div id="imageModal" class="image-modal">
         <span class="close-modal">&times;</span>
         <div class="modal-content">
-            <img id="modalImage" class="modal-image" src="" alt="Zoomed Product Image">
+            <!-- Modal content will be dynamically inserted here -->
         </div>
     </div>
 
@@ -693,9 +740,7 @@
                 <p>Bringing affordable luxury to everyone with our carefully curated collection of watches, jewelry and accessories.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                 <a href="#zillio_n"><i class="fab fa-instagram"></i></a>
-
-
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
@@ -734,14 +779,18 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script>
-        // Product Database - REPLACE WITH YOUR PRODUCTS
+        // Enhanced Product Database with multiple images
         const products = [
             {
                 id: 1,
                 title: "Leather Watch",
                 price: 8000,
                 category: "watches",
-                image: "images/watches/watch1.jpg",
+                images: [
+                    "images/watches/watch1.jpg",
+                    "images/watches/watch1_alt1.jpg",
+                    "images/watches/watch1_alt2.jpg"
+                ],
                 description: "Men's quartz watch retro large dial business casual PU leather watch"
             },
             {
@@ -749,8 +798,11 @@
                 title: "Multi-Joint Ring Set",
                 price: 7000,
                 category: "jewelry",
-                image: "images/jewelry/ring1.jpg",
-                
+                images: [
+                    "images/jewelry/ring1.jpg",
+                    "images/jewelry/ring1_alt1.jpg",
+                    "images/jewelry/ring1_alt2.jpg"
+                ],
                 description: "New open multi-joint ring set 22-piece love ring female design sense niche butterfly ring jewelry"
             },
             {
@@ -758,7 +810,10 @@
                 title: "Titanium Steel Necklace",
                 price: 6000,
                 category: "jewelry",
-                image: "images/jewelry/necklace7.jpg",
+                images: [
+                    "images/jewelry/necklace7.jpg",
+                    "images/jewelry/necklace7_alt1.jpg"
+                ],
                 description: "Titanium steel necklace men and women hip hop personality simple long pendant"
             },
             {
@@ -766,7 +821,12 @@
                 title: "Hot Sale Jewelry Set",
                 price: 5000,
                 category: "jewelry",
-                image: "images/jewelry/bracelet1.jpg",
+                images: [
+                    "images/jewelry/bracelet1.jpg",
+                    "images/jewelry/bracelet1_alt1.jpg",
+                    "images/jewelry/bracelet1_alt2.jpg",
+                    "images/jewelry/bracelet1_alt3.jpg"
+                ],
                 description: "Hot Sale Jewelry Simple Fashion Star Moon Diamond Glossy Heart Star Bracelet"
             },
             {
@@ -774,7 +834,10 @@
                 title: "Dumbbell Pendant Necklace",
                 price: 5000,
                 category: "jewelry",
-                image: "images/jewelry/necklace5.jpg",
+                images: [
+                    "images/jewelry/necklace5.jpg",
+                    "images/jewelry/necklace5_alt1.jpg"
+                ],
                 description: "Fitness Dumbbell Hip Hop Pendant Titanium Steel Men's Necklace"
             },
             {
@@ -782,7 +845,11 @@
                 title: "Smart Watch with Lighter",
                 price: 20000,
                 category: "watches",
-                image: "images/watches/watch2.jpg",
+                images: [
+                    "images/watches/watch2.jpg",
+                    "images/watches/watch2_alt1.jpg",
+                    "images/watches/watch2_alt2.jpg"
+                ],
                 description: "Watch with USB Charging and Flameless Lighter Functionality"
             },
             {
@@ -790,7 +857,11 @@
                 title: "Luxury Jewelry Set",
                 price: 15000,
                 category: "jewelry",
-                image: "images/jewelry/earrings1.jpg",
+                images: [
+                    "images/jewelry/earrings1.jpg",
+                    "images/jewelry/earrings1_alt1.jpg",
+                    "images/jewelry/earrings1_alt2.jpg"
+                ],
                 description: "6PCS Set Luxury Watch Women Ring Necklace Earring Rhinestone Fashion Set"
             },
             {
@@ -798,7 +869,10 @@
                 title: "Sexy Invisible Bra Lingerie",
                 price: 8000,
                 category: "accessories",
-                image: "images/accessories/ss.jpg",
+                images: [
+                    "images/accessories/ss.jpg",
+                    "images/accessories/ss_alt1.jpg"
+                ],
                 description: "Sexy Invisible Bra Lingerie For Women Backless Seamless Strapless Bra Sexy Bralette Mujer Brassiere Crop Top Push Up Bras Gifts"
             },
             {
@@ -806,7 +880,11 @@
                 title: "Handbags Korean",
                 price: 7000,
                 category: "accessories",
-                image: "images/accessories/bag.jpg",
+                images: [
+                    "images/accessories/bag.jpg",
+                    "images/accessories/bag_alt1.jpg",
+                    "images/accessories/bag_alt2.jpg"
+                ],
                 description: "Solid Color Temperament Women's Handbags Korean Stone Pattern Underarm Pouches Casual Shoulder Bags"
             },
             {
@@ -814,7 +892,10 @@
                 title: "Zipper Small Handbags",
                 price: 15000,
                 category: "accessories",
-                image: "images/accessories/bag1.jpg",
+                images: [
+                    "images/accessories/bag1.jpg",
+                    "images/accessories/bag1_alt1.jpg"
+                ],
                 description: "Women's Bag 2025 Brand Designer Zipper Small Handbags Lady Fashion Shoulder Bag PU Leather Casual Hobo Bags"
             },
             {
@@ -822,7 +903,10 @@
                 title: "Automatic Toothpaste",
                 price: 10000,
                 category: "accessories",
-                image: "images/accessories/br.jpg",
+                images: [
+                    "images/accessories/br.jpg",
+                    "images/accessories/br_alt1.jpg"
+                ],
                 description: "Automatic Toothpaste Dispenser Toothbrush Holder Storage Rack Wall Mount Holder Bathroom Accessories Toothpaste Squeezer Set"
             },
             {
@@ -830,7 +914,10 @@
                 title: "Punk Styles Playing Card Poker Pendant Necklace",
                 price: 7000,
                 category: "jewelry",
-                image: "images/jewelry/crf.jpg",
+                images: [
+                    "images/jewelry/crf.jpg",
+                    "images/jewelry/crf_alt1.jpg"
+                ],
                 description: "Punk Styles Playing Card Poker Pendant Necklace Men Boys Hip Hop Lucky Ace Of Spades Charm Necklace For Men Women Couple"
             },
             {
@@ -838,20 +925,12 @@
                 title: "Necklaces",
                 price: 7000,
                 category: "jewelry",
-                image: "images/jewelry/jew.jpg",
-                description: "Nightclub Hip-Hop Fashion Personality Letter Pendant Titanium Steel Necklaces for Men and Women Gold Stainless Steel Jewelry"
-            },
-              {
-                id: 16,
-                title: "Handbags",
-                price: 16000,
-                category: "accessories",
-                image: [
-                    "images/accessories/m.jpg",
-                    "images/accessories/k.jpg",
-                    "images/accessories/k.jpg"
+                images: [
+                    "images/jewelry/jew.jpg",
+                    "images/jewelry/jew_alt1.jpg",
+                    "images/jewelry/jew_alt2.jpg"
                 ],
-                description: "Large Capacity Weave Tote Summer Beach Straw Handbag Tassel Design Female Bohemian Shoulder Bag for Women 2023 Ladies Travel Bag"
+                description: "Nightclub Hip-Hop Fashion Personality Letter Pendant Titanium Steel Necklaces for Men and Women Gold Stainless Steel Jewelry"
             },
         ];
 
@@ -866,7 +945,7 @@
             const searchInput = document.getElementById('searchInput');
             const searchBtn = document.getElementById('searchBtn');
             const imageModal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
+            const modalContent = document.querySelector('.modal-content');
             const closeModal = document.querySelector('.close-modal');
             
             // Show specific page
@@ -889,7 +968,7 @@
                 window.scrollTo(0, 0);
             }
             
-            // Display products
+            // Display products with gallery functionality
             function displayProducts(category = 'all', searchQuery = '') {
                 productsContainer.innerHTML = '';
                 
@@ -909,8 +988,28 @@
                 filteredProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
+                    
+                    // Use first image as main image
+                    const mainImage = product.images ? product.images[0] : product.image;
+                    
                     productCard.innerHTML = `
-                        <img src="${product.image}" alt="${product.title}" class="product-img" data-id="${product.id}">
+                        <div class="product-gallery">
+                            <div class="main-image-container">
+                                <img src="${mainImage}" alt="${product.title}" class="main-image" data-id="${product.id}">
+                                ${product.images && product.images.length > 1 ? `
+                                <button class="gallery-nav prev" style="display:none;"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-nav next" style="display:none;"><i class="fas fa-chevron-right"></i></button>
+                                ` : ''}
+                            </div>
+                            ${product.images && product.images.length > 1 ? `
+                            <div class="thumbnail-container">
+                                ${product.images.map((img, index) => `
+                                    <img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" 
+                                         data-id="${product.id}" data-index="${index}">
+                                `).join('')}
+                            </div>
+                            ` : ''}
+                        </div>
                         <div class="product-info">
                             <h3 class="product-title">${product.title}</h3>
                             <div class="product-price">RWF ${product.price.toLocaleString()}</div>
@@ -919,35 +1018,150 @@
                         </div>
                     `;
                     productsContainer.appendChild(productCard);
+                    
+                    // Initialize gallery functionality if multiple images exist
+                    if (product.images && product.images.length > 1) {
+                        initProductGallery(productCard, product);
+                    }
                 });
                 
-                // Add event listeners to product images for zoom
-                document.querySelectorAll('.product-img').forEach(img => {
-                    img.addEventListener('click', (e) => {
-                        const productId = parseInt(e.target.getAttribute('data-id'));
+                // Add event listeners to product images for modal gallery
+                document.querySelectorAll('.main-image, .view-details').forEach(element => {
+                    element.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id') || 
+                                          e.target.closest('[data-id]').getAttribute('data-id'));
                         const product = products.find(p => p.id === productId);
                         if (product) {
-                            modalImage.src = product.image;
-                            modalImage.alt = product.title;
-                            imageModal.style.display = "flex";
-                            document.body.style.overflow = "hidden";
+                            showModalGallery(product);
                         }
                     });
                 });
+            }
+            
+            // Initialize product gallery functionality
+            function initProductGallery(productCard, product) {
+                const mainImage = productCard.querySelector('.main-image');
+                const prevBtn = productCard.querySelector('.prev');
+                const nextBtn = productCard.querySelector('.next');
+                const thumbnails = productCard.querySelectorAll('.thumbnail');
+                let currentIndex = 0;
                 
-                // Add event listeners to view details buttons
-                document.querySelectorAll('.view-details').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const productId = parseInt(e.target.getAttribute('data-id'));
-                        const product = products.find(p => p.id === productId);
-                        if (product) {
-                            modalImage.src = product.image;
-                            modalImage.alt = product.title;
-                            imageModal.style.display = "flex";
-                            document.body.style.overflow = "hidden";
-                        }
+                // Show nav buttons on hover
+                productCard.querySelector('.main-image-container').addEventListener('mouseenter', () => {
+                    if (prevBtn) prevBtn.style.display = 'flex';
+                    if (nextBtn) nextBtn.style.display = 'flex';
+                });
+                
+                productCard.querySelector('.main-image-container').addEventListener('mouseleave', () => {
+                    if (prevBtn) prevBtn.style.display = 'none';
+                    if (nextBtn) nextBtn.style.display = 'none';
+                });
+                
+                // Navigation functionality
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        currentIndex = (currentIndex + 1) % product.images.length;
+                        updateGallery();
+                    });
+                }
+                
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        currentIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+                        updateGallery();
+                    });
+                }
+                
+                // Thumbnail click functionality
+                thumbnails.forEach((thumb, index) => {
+                    thumb.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        currentIndex = index;
+                        updateGallery();
                     });
                 });
+                
+                function updateGallery() {
+                    mainImage.src = product.images[currentIndex];
+                    thumbnails.forEach((thumb, index) => {
+                        thumb.classList.toggle('active', index === currentIndex);
+                    });
+                }
+            }
+            
+            // Show modal gallery with all product images
+            function showModalGallery(product) {
+                // Clear previous modal content
+                modalContent.innerHTML = '';
+                
+                // Create gallery for modal
+                const modalGallery = document.createElement('div');
+                modalGallery.className = 'modal-gallery';
+                
+                // Main image
+                const modalMainImage = document.createElement('img');
+                modalMainImage.className = 'modal-main-image';
+                modalMainImage.src = product.images[0];
+                modalMainImage.alt = product.title;
+                
+                // Thumbnail container
+                const modalThumbnailContainer = document.createElement('div');
+                modalThumbnailContainer.className = 'modal-thumbnail-container';
+                
+                // Add thumbnails
+                product.images.forEach((img, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.className = `modal-thumbnail ${index === 0 ? 'active' : ''}`;
+                    thumbnail.src = img;
+                    thumbnail.alt = `Thumbnail ${index + 1}`;
+                    thumbnail.dataset.index = index;
+                    
+                    thumbnail.addEventListener('click', () => {
+                        modalMainImage.src = img;
+                        document.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('active'));
+                        thumbnail.classList.add('active');
+                    });
+                    
+                    modalThumbnailContainer.appendChild(thumbnail);
+                });
+                
+                // Navigation buttons
+                const modalPrevBtn = document.createElement('button');
+                modalPrevBtn.className = 'gallery-nav prev';
+                modalPrevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                modalPrevBtn.addEventListener('click', () => {
+                    const activeIndex = parseInt(document.querySelector('.modal-thumbnail.active').dataset.index);
+                    const newIndex = (activeIndex - 1 + product.images.length) % product.images.length;
+                    updateModalImage(newIndex);
+                });
+                
+                const modalNextBtn = document.createElement('button');
+                modalNextBtn.className = 'gallery-nav next';
+                modalNextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                modalNextBtn.addEventListener('click', () => {
+                    const activeIndex = parseInt(document.querySelector('.modal-thumbnail.active').dataset.index);
+                    const newIndex = (activeIndex + 1) % product.images.length;
+                    updateModalImage(newIndex);
+                });
+                
+                function updateModalImage(index) {
+                    modalMainImage.src = product.images[index];
+                    document.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('active'));
+                    document.querySelector(`.modal-thumbnail[data-index="${index}"]`).classList.add('active');
+                }
+                
+                // Assemble modal content
+                modalGallery.appendChild(modalMainImage);
+                modalGallery.appendChild(modalPrevBtn);
+                modalGallery.appendChild(modalNextBtn);
+                modalGallery.appendChild(modalThumbnailContainer);
+                modalContent.appendChild(modalGallery);
+                
+                // Show modal
+                imageModal.style.display = "flex";
+                document.body.style.overflow = "hidden";
             }
             
             // Event Listeners
@@ -963,7 +1177,6 @@
             mobileMenuBtn.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
-            
             
             // Category card clicks
             document.querySelectorAll('.category-card').forEach(card => {
@@ -998,147 +1211,6 @@
                     document.body.style.overflow = "auto";
                 }
             });
-            function displayProducts(category = 'all', searchQuery = '') {
-  productsContainer.innerHTML = '';
-  
-  const filteredProducts = products.filter(product => {
-    // ... existing filter logic
-  });
-  
-  filteredProducts.forEach(product => {
-    const productCard = document.createElement('div');
-    productCard.className = 'product-card';
-    productCard.innerHTML = `
-      <div class="product-slider" data-id="${product.id}">
-        ${product.images.map((img, index) => `
-          <div class="slide ${index === 0 ? 'active' : ''}">
-            <img src="${img}" alt="${product.title}" class="product-img">
-          </div>
-        `).join('')}
-        <button class="slide-arrow prev-arrow">&#10094;</button>
-        <button class="slide-arrow next-arrow">&#10095;</button>
-      </div>
-      <div class="product-info">
-        <h3 class="product-title">${product.title}</h3>
-        <div class="product-price">RWF ${product.price.toLocaleString()}</div>
-        <p class="product-description">${product.description}</p>
-      </div>
-    `;
-    productsContainer.appendChild(productCard);
-  });
-
-                function initProductSliders() {
-  document.querySelectorAll('.product-slider').forEach(slider => {
-    const slides = slider.querySelectorAll('.slide');
-    const prevArrow = slider.querySelector('.prev-arrow');
-    const nextArrow = slider.querySelector('.next-arrow');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      currentSlide = index;
-    }
-
-    prevArrow.addEventListener('click', () => {
-      let newIndex = currentSlide - 1;
-      if (newIndex < 0) newIndex = slides.length - 1;
-      showSlide(newIndex);
-    });
-
-    nextArrow.addEventListener('click', () => {
-      let newIndex = currentSlide + 1;
-      if (newIndex >= slides.length) newIndex = 0;
-      showSlide(newIndex);
-    });
-
-    // Optional: Add touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    slider.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, false);
-
-    slider.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, false);
-
-    function handleSwipe() {
-      if (touchEndX < touchStartX - 50) {
-        // Swipe left - next
-        let newIndex = currentSlide + 1;
-        if (newIndex >= slides.length) newIndex = 0;
-        showSlide(newIndex);
-      }
-      if (touchEndX > touchStartX + 50) {
-        // Swipe right - prev
-        let newIndex = currentSlide - 1;
-        if (newIndex < 0) newIndex = slides.length - 1;
-        showSlide(newIndex);
-          
-      }
-    }
-  });
-                    document.getElementById('productImages').addEventListener('change', function(e) {
-  const previewContainer = document.getElementById('imagePreviews');
-  previewContainer.innerHTML = '';
-  
-  Array.from(e.target.files).forEach(file => {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const preview = document.createElement('img');
-      preview.src = event.target.result;
-      previewContainer.appendChild(preview);
-    }
-    reader.readAsDataURL(file);
-  });
-});
-
-// Update form submission to handle multiple images
-document.getElementById('productUploadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const imageFiles = Array.from(document.getElementById('productImages').files);
-  if (imageFiles.length === 0) return;
-  
-  const imageReaders = imageFiles.map(file => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (event) => resolve(event.target.result);
-      reader.readAsDataURL(file);
-    });
-  });
-
-  Promise.all(imageReaders).then(images => {
-    const newProduct = {
-      id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
-      title: document.getElementById('productName').value,
-      price: parseInt(document.getElementById('productPrice').value),
-      category: document.getElementById('productCategory').value,
-      images: images,  // Now storing array of images
-      description: document.getElementById('productDescription').value
-    };
-    
-    products.push(newProduct);
-    localStorage.setItem('userProducts', JSON.stringify(products.filter(p => p.images[0].startsWith('data:'))));
-    
-    alert('Product added successfully!');
-    e.target.reset();
-    document.getElementById('imagePreviews').innerHTML = '';
-    
-    if (document.querySelector('.page.active').id === 'shop') {
-      displayProducts('all');
-    }
-  });
-});
-}
-                
-  // Initialize sliders
-  initProductSliders();
-}
             
             // Initialize
             showPage('home');

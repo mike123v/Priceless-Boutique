@@ -14,7 +14,20 @@
             --light: #f8f9fa;
             --dark: #212529;
         }
-        
+        .image-previews {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.image-previews img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
         * {
             margin: 0;
             padding: 0;
@@ -484,6 +497,57 @@
             .mobile-menu-btn {
                 display: block;
             }
+            /* Add to your existing CSS */
+.product-slider {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.product-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.product-slider .slide.active {
+  opacity: 1;
+}
+
+.product-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slide-arrow.prev-arrow {
+  left: 10px;
+}
+
+.slide-arrow.next-arrow {
+  right: 10px;
+}
+
+.slide-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
             
             .hero-content h1 {
                 font-size: 2rem;
@@ -571,6 +635,11 @@
                 <p>Our mission is simple: to make luxury accessible. We meticulously select each item in our collection to ensure it meets our standards of quality, style, and affordability.</p>
             </div>
         </div>
+        <div class="form-group">
+  <label for="productImages">Product Images (Multiple):</label>
+  <input type="file" id="productImages" accept="image/*" multiple required>
+  <div id="imagePreviews" class="image-previews"></div>
+</div>
 
         <!-- Contact Page -->
         <div id="contact" class="page">
@@ -895,6 +964,7 @@
                 mainNav.classList.toggle('active');
             });
             
+            
             // Category card clicks
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', () => {
@@ -928,6 +998,147 @@
                     document.body.style.overflow = "auto";
                 }
             });
+            function displayProducts(category = 'all', searchQuery = '') {
+  productsContainer.innerHTML = '';
+  
+  const filteredProducts = products.filter(product => {
+    // ... existing filter logic
+  });
+  
+  filteredProducts.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    productCard.innerHTML = `
+      <div class="product-slider" data-id="${product.id}">
+        ${product.images.map((img, index) => `
+          <div class="slide ${index === 0 ? 'active' : ''}">
+            <img src="${img}" alt="${product.title}" class="product-img">
+          </div>
+        `).join('')}
+        <button class="slide-arrow prev-arrow">&#10094;</button>
+        <button class="slide-arrow next-arrow">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${product.title}</h3>
+        <div class="product-price">RWF ${product.price.toLocaleString()}</div>
+        <p class="product-description">${product.description}</p>
+      </div>
+    `;
+    productsContainer.appendChild(productCard);
+  });
+
+                function initProductSliders() {
+  document.querySelectorAll('.product-slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.slide');
+    const prevArrow = slider.querySelector('.prev-arrow');
+    const nextArrow = slider.querySelector('.next-arrow');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    prevArrow.addEventListener('click', () => {
+      let newIndex = currentSlide - 1;
+      if (newIndex < 0) newIndex = slides.length - 1;
+      showSlide(newIndex);
+    });
+
+    nextArrow.addEventListener('click', () => {
+      let newIndex = currentSlide + 1;
+      if (newIndex >= slides.length) newIndex = 0;
+      showSlide(newIndex);
+    });
+
+    // Optional: Add touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) {
+        // Swipe left - next
+        let newIndex = currentSlide + 1;
+        if (newIndex >= slides.length) newIndex = 0;
+        showSlide(newIndex);
+      }
+      if (touchEndX > touchStartX + 50) {
+        // Swipe right - prev
+        let newIndex = currentSlide - 1;
+        if (newIndex < 0) newIndex = slides.length - 1;
+        showSlide(newIndex);
+          
+      }
+    }
+  });
+                    document.getElementById('productImages').addEventListener('change', function(e) {
+  const previewContainer = document.getElementById('imagePreviews');
+  previewContainer.innerHTML = '';
+  
+  Array.from(e.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const preview = document.createElement('img');
+      preview.src = event.target.result;
+      previewContainer.appendChild(preview);
+    }
+    reader.readAsDataURL(file);
+  });
+});
+
+// Update form submission to handle multiple images
+document.getElementById('productUploadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const imageFiles = Array.from(document.getElementById('productImages').files);
+  if (imageFiles.length === 0) return;
+  
+  const imageReaders = imageFiles.map(file => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (event) => resolve(event.target.result);
+      reader.readAsDataURL(file);
+    });
+  });
+
+  Promise.all(imageReaders).then(images => {
+    const newProduct = {
+      id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
+      title: document.getElementById('productName').value,
+      price: parseInt(document.getElementById('productPrice').value),
+      category: document.getElementById('productCategory').value,
+      images: images,  // Now storing array of images
+      description: document.getElementById('productDescription').value
+    };
+    
+    products.push(newProduct);
+    localStorage.setItem('userProducts', JSON.stringify(products.filter(p => p.images[0].startsWith('data:'))));
+    
+    alert('Product added successfully!');
+    e.target.reset();
+    document.getElementById('imagePreviews').innerHTML = '';
+    
+    if (document.querySelector('.page.active').id === 'shop') {
+      displayProducts('all');
+    }
+  });
+});
+}
+                
+  // Initialize sliders
+  initProductSliders();
+}
             
             // Initialize
             showPage('home');

@@ -13,6 +13,7 @@
             --secondary: #d4af37;
             --light: #f8f9fa;
             --dark: #212529;
+            --success: #28a745;
         }
         
         * {
@@ -350,8 +351,13 @@
             margin-bottom: 1rem;
         }
         
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
         .view-details {
-            width: 100%;
+            flex: 1;
             padding: 0.7rem;
             background-color: var(--primary);
             color: white;
@@ -364,6 +370,200 @@
         .view-details:hover {
             background-color: var(--secondary);
             color: var(--primary);
+        }
+        
+        .order-btn {
+            flex: 1;
+            padding: 0.7rem;
+            background-color: var(--success);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .order-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* Order Modal */
+        .order-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+        }
+        
+        .order-modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .order-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .close-order-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .order-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .order-form input,
+        .order-form textarea,
+        .order-form select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .order-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-summary-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .order-summary-total {
+            font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .submit-order-btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-order-btn:hover {
+            background-color: #c9a227;
+        }
+        
+        .payment-notice {
+            background-color: #fff8e1;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5d4037;
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .success-modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        .success-icon {
+            color: var(--success);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .close-success-modal {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .close-success-modal:hover {
+            background-color: #333;
         }
         
         /* About Page */
@@ -608,6 +808,15 @@
             .main-image-container {
                 height: 200px;
             }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .order-modal-content {
+                margin: 1rem auto;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -723,6 +932,71 @@
             </div>
         </div>
     </main>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="order-modal">
+        <div class="order-modal-content">
+            <div class="order-modal-header">
+                <h3 class="order-modal-title">Place Your Order</h3>
+                <button class="close-order-modal">&times;</button>
+            </div>
+            <form id="orderForm" class="order-form">
+                <div class="order-summary">
+                    <h4 class="order-summary-title">Order Summary</h4>
+                    <div id="orderSummaryItems">
+                        <!-- Order items will be added here dynamically -->
+                    </div>
+                    <div class="order-summary-item order-summary-total">
+                        <span>Total:</span>
+                        <span id="orderTotal">RWF 0</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email (Optional)</label>
+                    <input type="email" id="customerEmail" name="customerEmail">
+                </div>
+                
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <textarea id="deliveryAddress" name="deliveryAddress" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deliveryNotes">Delivery Notes (Optional)</label>
+                    <textarea id="deliveryNotes" name="deliveryNotes" placeholder="Any special instructions for delivery"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-order-btn">Place Order</button>
+                
+                <div class="payment-notice">
+                    <i class="fas fa-info-circle"></i> You'll pay when your order arrives. No payment required now.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Order Placed Successfully!</h3>
+            <p class="success-message">Thank you for your order. We'll contact you shortly to confirm the details.</p>
+            <button class="close-success-modal">Continue Shopping</button>
+        </div>
+    </div>
 
     <!-- Image Zoom Modal -->
     <div id="imageModal" class="image-modal">
@@ -986,6 +1260,21 @@
             const modalContent = document.querySelector('.modal-content');
             const closeModal = document.querySelector('.close-modal');
             
+            // Order system elements
+            const orderModal = document.getElementById('orderModal');
+            const orderForm = document.getElementById('orderForm');
+            const orderSummaryItems = document.getElementById('orderSummaryItems');
+            const orderTotal = document.getElementById('orderTotal');
+            const successModal = document.getElementById('successModal');
+            const closeOrderModal = document.querySelector('.close-order-modal');
+            const closeSuccessModal = document.querySelector('.close-success-modal');
+            
+            // Current order data
+            let currentOrder = {
+                items: [],
+                total: 0
+            };
+            
             // Show specific page
             function showPage(pageId, category = null) {
                 pages.forEach(page => {
@@ -1052,7 +1341,10 @@
                             <h3 class="product-title">${product.title}</h3>
                             <div class="product-price">RWF ${product.price.toLocaleString()}</div>
                             <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">${product.description}</p>
-                            <button class="view-details" data-id="${product.id}">View Details</button>
+                            <div class="product-actions">
+                                <button class="view-details" data-id="${product.id}">View Details</button>
+                                <button class="order-btn" data-id="${product.id}">Order Now</button>
+                            </div>
                         </div>
                     `;
                     productsContainer.appendChild(productCard);
@@ -1071,6 +1363,17 @@
                         const product = products.find(p => p.id === productId);
                         if (product) {
                             showModalGallery(product);
+                        }
+                    });
+                });
+                
+                // Add event listeners to order buttons
+                document.querySelectorAll('.order-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        const product = products.find(p => p.id === productId);
+                        if (product) {
+                            prepareOrder(product);
                         }
                     });
                 });
@@ -1202,6 +1505,58 @@
                 document.body.style.overflow = "hidden";
             }
             
+            // Prepare order with selected product
+            function prepareOrder(product) {
+                // Reset current order
+                currentOrder = {
+                    items: [{
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        quantity: 1,
+                        image: product.images[0]
+                    }],
+                    total: product.price
+                };
+                
+                // Update order summary
+                updateOrderSummary();
+                
+                // Show order modal
+                orderModal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+            
+            // Update order summary in the modal
+            function updateOrderSummary() {
+                orderSummaryItems.innerHTML = '';
+                
+                currentOrder.items.forEach(item => {
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-summary-item';
+                    orderItem.innerHTML = `
+                        <span>${item.title} (x${item.quantity})</span>
+                        <span>RWF ${(item.price * item.quantity).toLocaleString()}</span>
+                    `;
+                    orderSummaryItems.appendChild(orderItem);
+                });
+                
+                orderTotal.textContent = `RWF ${currentOrder.total.toLocaleString()}`;
+            }
+            
+            // Submit order form
+            function submitOrder(orderData) {
+                // Here you would typically send the order to your server
+                // For this example, we'll just log it and show success
+                console.log('Order submitted:', orderData);
+                
+                // Close order modal
+                orderModal.style.display = "none";
+                
+                // Show success modal
+                successModal.style.display = "block";
+            }
+            
             // Event Listeners
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -1248,6 +1603,54 @@
                     imageModal.style.display = "none";
                     document.body.style.overflow = "auto";
                 }
+            });
+            
+            // Order modal functionality
+            closeOrderModal.addEventListener('click', () => {
+                orderModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === orderModal) {
+                    orderModal.style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            });
+            
+            // Success modal functionality
+            closeSuccessModal.addEventListener('click', () => {
+                successModal.style.display = "none";
+                document.body.style.overflow = "auto";
+                showPage('shop');
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === successModal) {
+                    successModal.style.display = "none";
+                    document.body.style.overflow = "auto";
+                    showPage('shop');
+                }
+            });
+            
+            // Order form submission
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const orderData = {
+                    customer: {
+                        name: document.getElementById('customerName').value,
+                        phone: document.getElementById('customerPhone').value,
+                        email: document.getElementById('customerEmail').value,
+                        address: document.getElementById('deliveryAddress').value,
+                        notes: document.getElementById('deliveryNotes').value
+                    },
+                    items: currentOrder.items,
+                    total: currentOrder.total,
+                    date: new Date().toISOString()
+                };
+                
+                submitOrder(orderData);
             });
             
             // Initialize

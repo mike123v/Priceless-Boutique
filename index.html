@@ -30,17 +30,22 @@
             display: flex;
             flex-direction: column;
             color: #333;
+            background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
         }
         
         /* Header */
         header {
-            background-color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.85);
             color: white;
             padding: 1rem 5%;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
         
         .header-container {
@@ -154,6 +159,9 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
         
         /* Page Containers */
@@ -173,7 +181,7 @@
         
         /* Home Page - Enhanced Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1467043198406-dc953a3defa0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80');
             background-size: cover;
             background-position: center;
             height: 80vh;
@@ -427,6 +435,8 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(247,247,247,0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .product-card:hover {
@@ -462,7 +472,7 @@
         .main-image-container {
             position: relative;
             height: 250px;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -517,7 +527,7 @@
             padding: 10px;
             overflow-x: auto;
             scrollbar-width: none; /* Firefox */
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
         }
 
         .thumbnail-container::-webkit-scrollbar {
@@ -594,6 +604,26 @@
         
         .order-btn:hover {
             background-color: #218838;
+        }
+        
+        /* Delivery Notice Banner */
+        .delivery-notice {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .delivery-notice i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .delivery-notice strong {
+            color: var(--primary);
         }
         
         /* Order Modal */
@@ -967,10 +997,11 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: rgba(33, 37, 41, 0.9);
             color: white;
             padding: 4rem 5% 2rem;
             margin-top: auto;
+            backdrop-filter: blur(10px);
         }
         
         .footer-container {
@@ -1148,6 +1179,11 @@
                 </div>
             </section>
 
+            <div class="delivery-notice">
+                <i class="fas fa-truck"></i>
+                <strong>Delivery Notice:</strong> You'll receive your order in 10-15 days and pay only after receiving it.
+            </div>
+
             <h2 class="section-title">Our Collections</h2>
             <div class="categories">
                 <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80')" data-category="watches">
@@ -1177,6 +1213,12 @@
                 <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
                 <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
+            
+            <div class="delivery-notice">
+                <i class="fas fa-truck"></i>
+                <strong>Delivery Notice:</strong> You'll receive your order in 10-15 days and pay only after receiving it.
+            </div>
+            
             <h2 class="section-title">Our Products</h2>
             <div class="products" id="productsContainer">
                 <!-- Products will be loaded here by JavaScript -->
